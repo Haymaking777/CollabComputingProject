@@ -1,0 +1,23 @@
+{
+  "name": "collabcomputingproject",
+  "version": "1.0.0",
+  "description": "This project has a minimal setup of Hardhat 3, without any plugins.",
+  "main": "hardhat.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haymaking777/CollabComputingProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Haymaking777/CollabComputingProject/issues"
+  },
+  "homepage": "https://github.com/Haymaking777/CollabComputingProject#readme",
+  "dependencies": {
+    "mqtt": "^5.16.0"
+  }
+}
