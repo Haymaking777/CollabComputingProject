@@ -22,6 +22,16 @@ client.on("connect", () => {
 
 client.on("message", (topic, message) => {
   console.log("📥 Received:", message.toString());
+
+  // logic gak bener
+  const data = JSON.parse.message.toString(){
+    if data.wait > 500{
+      console.log("Warning!")
+    }else{
+      console.log("Normal")
+    }
+  }
+
 });
 
 client.on("error", (err) => console.error("❌ MQTT error:", err.message));
