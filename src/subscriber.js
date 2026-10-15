@@ -1,7 +1,7 @@
 const mqtt = require("mqtt");
 
 const BROKER_URL = "mqtt://broker.hivemq.com";
-const TOPIC = "jaliko/smart-energy/energy/data";
+const TOPIC = "kiwi-smarthome-light";
 
 const client = mqtt.connect(BROKER_URL, {
   connectTimeout: 10_000,
@@ -23,16 +23,21 @@ client.on("connect", () => {
 client.on("message", (topic, message) => {
   console.log("📥 Received:", message.toString());
 
-  // logic gak bener
-  const data = JSON.parse.message.toString(){
-    if data.wait > 500{
-      console.log("Warning!")
-    }else{
-      console.log("Normal")
+  try {
+    const data = JSON.parse(message.toString());
+    
+    if (data.wait > 500) {
+      console.log("Warning!");
+    } else {
+      console.log("Normal");
     }
+  } catch (err) {
+    console.error("❌ Invalid JSON received:", err.message);
   }
-
 });
+  
+
+
 
 client.on("error", (err) => console.error("❌ MQTT error:", err.message));
 
