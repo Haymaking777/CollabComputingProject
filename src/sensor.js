@@ -4,7 +4,7 @@ const mqtt = require("mqtt");
 const BROKER_URL = "mqtt://broker.hivemq.com";
 
 // Use a specific topic to avoid conflicts with other users
-const TOPIC = "jaliko/smart-energy/energy/data";
+const TOPIC = "jaliko/smart-energy/energy/data2";
 
 const client = mqtt.connect(BROKER_URL, {
   connectTimeout: 10_000,
