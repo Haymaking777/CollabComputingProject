@@ -4,7 +4,7 @@ const mqtt = require("mqtt");
 const BROKER_URL = "mqtt://broker.hivemq.com";
 
 // Use a specific topic to avoid conflicts with other users
-const TOPIC = "jaliko/smart-energy/energy/data";
+const TOPIC = "kiwi-smarthome-light";
 
 const client = mqtt.connect(BROKER_URL, {
   connectTimeout: 10_000,
@@ -17,7 +17,7 @@ client.on("connect", () => {
   setInterval(() => {
     const payload = {
       deviceId: "sensor-001",
-      watt: Math.floor(Math.random() * 1000) + 1, // 1..1000
+      lightlevel: Math.floor(Math.random() * 1000) + 1, // 1..1000
       timestamp: new Date().toISOString(),
     };
 
