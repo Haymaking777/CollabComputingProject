@@ -7,8 +7,8 @@ const BROKER_URL = "mqtt://broker.hivemq.com";
 const TOPIC = "kiwi-smarthome-ac";
 
 const client = mqtt.connect(BROKER_URL, {
-  connectTimeout: 10_000,
-  reconnectPeriod: 2_000,
+  connectTimeout: 10000,
+  reconnectPeriod: 2000,
 });
 
 client.on("connect", () => {
@@ -17,7 +17,7 @@ client.on("connect", () => {
   setInterval(() => {
     const payload = {
       deviceId: "sensor-003",
-      heat: 33,
+      heat: Math.floor(Math.random() * 40) + 1, // Format : Celsius Range 1-40
       timestamp: new Date().toISOString(),
     };
 
