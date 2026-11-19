@@ -5,7 +5,7 @@ contract EnergyData {
 
     struct Record {
         string deviceId;
-        string sensorData;
+        uint256 sensorData;
         string dataHash;
         uint256 timestamp;
     }
@@ -14,14 +14,14 @@ contract EnergyData {
 
     event DataStored(
         string deviceId,
-        string sensorData,
+        uint256 sensorData,
         string dataHash,
         uint256 timestamp
     );
 
     function storeData(
         string memory _deviceId,
-        string memory _sensorData,
+        uint256 _sensorData,
         string memory _dataHash
     ) public {
 
@@ -47,7 +47,7 @@ contract EnergyData {
         view
         returns (
             string memory,
-            string memory,
+            uint256,
             string memory,
             uint256
         )
