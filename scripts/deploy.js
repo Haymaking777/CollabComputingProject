@@ -1,22 +1,23 @@
-//Now every time you deploy locally, config stays correct.?
-
+const hre = require("hardhat");
 const fs = require("fs");
 const path = require("path");
-const { ethers } = require("hardhat");
 
 async function main() {
-  const EnergyData = await ethers.getContractFactory("EnergyData");
-  const contract = await EnergyData.deploy();
-  await contract.deployed();
+  const EnergyData = await hre.ethers.getContractFactory("EnergyData");
+  const energyData = await EnergyData.deploy();
+  await energyData.waitForDeployment();
 
-  console.log("✅ EnergyData deployed to:", contract.address);
+  const addr = await energyData.getAddress();
+  console.log("✅ EnergyData deployed to:", addr);
 
-  // Auto-write address into config/contractInfo.json
-  const cfgPath = path.join(__dirname, "..", "config", "contractInfo.json");
-  const cfg = JSON.parse(fs.readFileSync(cfgPath, "utf8"));
-  cfg.address = contract.address;
-  fs.writeFileSync(cfgPath, JSON.stringify(cfg, null, 2));
-  console.log("📝 Updated config/contractInfo.json");
+  // Save address for other scripts
+  const outDir = path.join(__dirname, "..", "deployments");
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(outDir, "localhost.json"),
+    JSON.stringify({ address: addr }, null, 2)
+  );
+  console.log("📝 Address saved to deployments/localhost.json");
 }
 
 main().catch((error) => {
