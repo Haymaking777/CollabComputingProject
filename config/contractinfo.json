@@ -1,0 +1,5 @@
+{
+  "address": "PASTE_DEPLOYED_CONTRACT_ADDRESS_HERE",
+  "abiPath": "artifacts/contracts/EnergyData.sol/EnergyData.json",
+  "networkUrl": "http://127.0.0.1:8545"
+}
